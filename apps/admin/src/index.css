@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@import "../../../packages/shared/src/tokens.css";
+@source "../../../packages/ui/src";
+
+@layer base {
+  body {
+    background: var(--color-kage);
+    color: var(--color-washi);
+    font-family: var(--font-sans);
+  }
+}

@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@import "../../../packages/shared/src/tokens.css";
+@source "../../../packages/ui/src";
+
+@theme inline {
+  --font-heading: var(--font-noto-serif-jp), "Noto Serif JP", serif;
+  --font-sans: var(--font-inter), "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    background: var(--color-kage);
+    color: var(--color-washi);
+    font-family: var(--font-sans);
+  }
+}

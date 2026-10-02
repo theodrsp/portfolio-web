@@ -1,0 +1,25 @@
+@theme {
+  /* Permukaan */
+  --color-kage: #0B0B0D;
+  --color-yoru: #121216;
+  --color-yoru-light: #1C1C22;
+  --color-line: #292930;
+
+  /* Teks */
+  --color-washi: #F4F0E8;
+  --color-mist: #B8B5B0;
+
+  /* Aksen */
+  --color-torii: #C62828;
+  --color-vermilion: #E5484D;
+  --color-maya: #D6A85F;
+
+  /* Status */
+  --color-success: #4CAF7D;
+  --color-warning: #D6A84F;
+  --color-danger: #E05252;
+
+  /* Font (fallback berdasarkan nama; tiap app memetakan font aslinya) */
+  --font-heading: "Noto Serif JP", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
