@@ -7,6 +7,14 @@
   --font-sans: var(--font-inter), "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 5rem; /* sesuaikan dengan tinggi navbar */
+}
+
 @layer base {
   body {
     background: var(--color-kage);
