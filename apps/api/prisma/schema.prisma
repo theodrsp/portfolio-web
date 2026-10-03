@@ -1,0 +1,100 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum ProjectType {
+  APP
+  STUDENT_WORK
+}
+
+enum ProjectStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model AdminUser {
+  id           Int    @id @default(autoincrement())
+  email        String @unique
+  passwordHash String
+}
+
+// Satu baris saja: id selalu 1
+model Profile {
+  id          Int     @id @default(1)
+  nameDisplay String
+  headlineId  String
+  headlineEn  String
+  bioId       String
+  bioEn       String
+  photoUrl    String?
+  email       String
+  whatsapp    String
+  linkedinUrl String
+  githubUrl   String
+  cvUrl       String?
+  teachingPhilosophyId String?
+  teachingPhilosophyEn String?
+  projectsDoneCount Int @default(0)
+  teachingYears     Int @default(0)
+  studentsTaught    Int @default(0)
+}
+
+model Skill {
+  id       Int    @id @default(autoincrement())
+  name     String
+  category String // Frontend, Backend, Database, Mengajar, dll
+  level    Int // mis. 1-5
+  iconKey  String
+  order    Int    @default(0)
+  showInStrip Boolean @default(false)
+}
+
+model Project {
+  id            Int           @id @default(autoincrement())
+  slug          String        @unique
+  type          ProjectType
+  titleId       String
+  titleEn       String
+  summaryId     String
+  summaryEn     String
+  descriptionId String?
+  descriptionEn String?
+  tags          String[]
+  coverUrl      String?
+  images        String[]
+  demoUrl       String?
+  repoUrl       String?
+  featured      Boolean       @default(false)
+  status        ProjectStatus @default(DRAFT)
+  order         Int           @default(0)
+
+  // Khusus STUDENT_WORK (kosong untuk APP)
+  tool               String?
+  studentDisplayName String?
+  studentAgeRange    String?
+  learningOutcomesId String?
+  learningOutcomesEn String?
+}
+
+model TeachingTool {
+  id            Int    @id @default(autoincrement())
+  name          String
+  descriptionId String
+  descriptionEn String
+  ageRange      String
+  order         Int    @default(0)
+}
+
+model ContactMessage {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+  isRead    Boolean  @default(false)
+}
