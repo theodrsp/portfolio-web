@@ -5,7 +5,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch src/index.ts"
+    "dev": "tsx watch src/index.ts",
+    "admin:create": "tsx prisma/create-admin.ts",
+    "db:seed": "tsx prisma/seed.ts"
   },
   "keywords": [],
   "author": "",
