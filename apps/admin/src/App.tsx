@@ -1,16 +1,20 @@
-import { useEffect, useState } from "react";
+import { Navigate, Route, Routes } from "react-router";
 
-import { api } from "./lib/api";
+import { AuthProvider } from "./auth/AuthProvider";
+import DashboardPage from "./pages/DashboardPage";
+import LoginPage from "./pages/LoginPage";
+import { RequireAuth } from "./auth/RequireAuth";
 
 export default function App() {
-  const [status, setStatus] = useState("Memeriksa koneksi API...");
-
-  useEffect(() => {
-    api
-      .get<{ nameDisplay: string }>("/api/profile")
-      .then((p) => setStatus(`API terhubung: ${p.nameDisplay}`))
-      .catch((e: Error) => setStatus(`Gagal: ${e.message}`));
-  }, []);
-
-  return <main className="p-8">{status}</main>;
+  return (
+    <AuthProvider>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route element={<RequireAuth />}>
+          <Route index element={<DashboardPage />} />
+        </Route>
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </AuthProvider>
+  );
 }
