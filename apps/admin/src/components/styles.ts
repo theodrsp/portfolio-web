@@ -1,2 +1,2 @@
 export const inputClass =
-  "w-full rounded-md border border-line bg-kage px-3 py-2 outline-none focus:border-vermilion";
+  "w-full rounded-lg border border-line bg-yoru px-4 py-2.5 text-sm text-washi placeholder:text-mist/60 focus:border-maya focus:outline-none";

@@ -179,3 +179,6 @@ export const skillInputSchema = z.object({
   order: z.number().int().min(0).default(0),
   showInStrip: z.boolean().default(false),
 });
+
+export type SkillInput = z.infer<typeof skillInputSchema>;
+export type ProfileInput = z.infer<typeof profileInputSchema>;

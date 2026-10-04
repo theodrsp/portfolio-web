@@ -5,7 +5,9 @@ import { AuthProvider } from "./auth/AuthProvider";
 import DashboardPage from "./pages/DashboardPage";
 import LoginPage from "./pages/LoginPage";
 import PlaceholderPage from "./pages/PlaceholderPage";
+import ProfilePage from "./pages/ProfilePage";
 import { RequireAuth } from "./auth/RequireAuth";
+import SkillsPage from "./pages/SkillsPage";
 
 export default function App() {
   return (
@@ -15,8 +17,8 @@ export default function App() {
         <Route element={<RequireAuth />}>
           <Route element={<AdminLayout />}>
             <Route index element={<DashboardPage />} />
-            <Route path="profile" element={<PlaceholderPage title="Profil" />} />
-            <Route path="skills" element={<PlaceholderPage title="Skill" />} />
+            <Route path="profile" element={<ProfilePage />} />
+            <Route path="skills" element={<SkillsPage />} />
             <Route path="projects" element={<PlaceholderPage title="Proyek Aplikasi" />} />
             <Route path="student-works" element={<PlaceholderPage title="Karya Murid" />} />
             <Route path="teaching-tools" element={<PlaceholderPage title="Alat Mengajar" />} />
