@@ -1,1 +1,65 @@
-{ "Test": { "hello": "Hello" } }
+{
+  "Nav": {
+    "language": "Language",
+    "home": "Home",
+    "projects": "Projects",
+    "studentWorks": "Student Work",
+    "about": "About",
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "Common": {
+    "all": "All"
+  },
+  "Hero": {
+    "statProjects": "Projects completed",
+    "statYears": "Years teaching",
+    "statStudents": "Students taught",
+    "ctaProjects": "View Projects",
+    "ctaContact": "Contact Me",
+    "photoAlt": "Photo of {name}"
+  },
+  "About": {
+    "title": "About Me",
+    "teaching": "Teaching Experience",
+    "photoAlt": "Photo of {name}"
+  },
+  "Projects": {
+    "title": "App Projects",
+    "intro": "Apps I built myself.",
+    "filterLabel": "Filter projects",
+    "empty": "No projects in this category yet.",
+    "featured": "Featured",
+    "coverAlt": "Preview of {title}",
+    "demo": "View Demo",
+    "source": "Source Code"
+  },
+  "StudentWorks": {
+    "title": "Student Work",
+    "intro": "What my students have learned and built.",
+    "filterLabel": "Filter student work",
+    "empty": "No work in this category yet.",
+    "close": "Close work details",
+    "screenshotAlt": "Screenshot {current} of {total}: {title}",
+    "viewScreenshot": "View screenshot {number}",
+    "learningOutcomes": "Learning outcomes",
+    "age": "{range} years old"
+  },
+  "Contact": {
+    "title": "Contact",
+    "intro": "Have a project, a question, or want your child to learn coding? Get in touch.",
+    "openProfile": "Open profile",
+    "downloadCv": "Download CV",
+    "formTitle": "Send a message",
+    "name": "Name",
+    "message": "Message",
+    "send": "Send",
+    "comingSoon": "Message sending is coming soon."
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "back": "Back to home"
+  }
+}

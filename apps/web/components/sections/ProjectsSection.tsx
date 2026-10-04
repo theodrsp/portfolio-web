@@ -1,15 +1,15 @@
 import { ProjectFilter } from "@/components/ProjectFilter";
-import type { publicProjectSchema } from "@portfolio/shared";
-import type { z } from "zod";
+import { useTranslations } from "next-intl";
+import type { LocalizedProject } from "@/lib/localize";
 
-type Project = z.infer<typeof publicProjectSchema>;
+export function ProjectsSection({ projects }: { projects: LocalizedProject[] }) {
+  const t = useTranslations("Projects");
 
-export function ProjectsSection({ projects }: { projects: Project[] }) {
   return (
     <section id="proyek" className="px-4 py-20">
       <div className="mx-auto max-w-6xl">
-        <h2 className="font-heading text-3xl">Proyek Aplikasi</h2>
-        <p className="mt-2 text-mist">Aplikasi yang saya bangun sendiri.</p>
+        <h2 className="font-heading text-3xl">{t("title")}</h2>
+        <p className="mt-2 text-mist">{t("intro")}</p>
         <ProjectFilter projects={projects} />
       </div>
     </section>

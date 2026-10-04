@@ -1,8 +1,8 @@
 // Untuk sekarang label masih Bahasa Indonesia. Saat tiba waktunya dua bahasa, daftar ini yang kita ubah.
 export const SECTIONS = [
-  { id: "beranda", label: "Beranda" },
-  { id: "proyek", label: "Proyek" },
-  { id: "karya-murid", label: "Karya Murid" },
-  { id: "tentang", label: "Tentang" },
-  { id: "kontak", label: "Kontak" },
+  { id: "beranda", key: "home" },
+  { id: "proyek", key: "projects" },
+  { id: "karya-murid", key: "studentWorks" },
+  { id: "tentang", key: "about" },
+  { id: "kontak", key: "contact" },
 ] as const;

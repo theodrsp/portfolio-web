@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { Logo } from "@portfolio/ui";
 import { SECTIONS } from "@/lib/sections";
+import { useTranslations } from "next-intl";
 
 export function Navbar() {
+  const t = useTranslations("Nav");
   const [active, setActive] = useState<string>(SECTIONS[0].id);
   const [open, setOpen] = useState(false);
 
@@ -46,34 +48,40 @@ export function Navbar() {
           <Logo />
         </a>
 
-        {/* Desktop */}
-        <ul className="hidden gap-6 text-sm md:flex">
-          {SECTIONS.map(({ id, label }) => (
-            <li key={id}>
-              <a
-                href={`#${id}`}
-                aria-current={active === id ? "true" : undefined}
-                className={linkClass(id)}
-              >
-                {label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        {/* Desktop: menu + pengalih bahasa */}
+        <div className="hidden items-center gap-6 md:flex">
+          <ul className="flex gap-6 text-sm">
+            {SECTIONS.map(({ id, key }) => (
+              <li key={id}>
+                <a
+                  href={`#${id}`}
+                  aria-current={active === id ? "true" : undefined}
+                  className={linkClass(id)}
+                >
+                  {t(key)}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <LanguageSwitcher />
+        </div>
 
-        {/* Tombol hamburger (hanya HP) */}
-        <button
-          type="button"
-          className="p-2 text-washi md:hidden"
-          aria-label={open ? "Tutup menu" : "Buka menu"}
-          aria-expanded={open}
-          aria-controls="menu-hp"
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span aria-hidden="true" className="text-2xl leading-none">
-            {open ? "✕" : "☰"}
-          </span>
-        </button>
+        {/* HP: pengalih bahasa + tombol hamburger */}
+        <div className="flex items-center gap-1 md:hidden">
+          <LanguageSwitcher />
+          <button
+            type="button"
+            className="p-2 text-washi"
+            aria-label={open ? t("closeMenu") : t("openMenu")}
+            aria-expanded={open}
+            aria-controls="menu-hp"
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span aria-hidden="true" className="text-2xl leading-none">
+              {open ? "✕" : "☰"}
+            </span>
+          </button>
+        </div>
       </nav>
 
       {/* Panel menu HP */}
@@ -82,7 +90,7 @@ export function Navbar() {
           id="menu-hp"
           className="border-t border-line bg-yoru px-4 py-2 md:hidden"
         >
-          {SECTIONS.map(({ id, label }) => (
+          {SECTIONS.map(({ id, key }) => (
             <li key={id}>
               <a
                 href={`#${id}`}
@@ -90,7 +98,7 @@ export function Navbar() {
                 aria-current={active === id ? "true" : undefined}
                 className={`block py-3 ${linkClass(id)}`}
               >
-                {label}
+                {t(key)}
               </a>
             </li>
           ))}

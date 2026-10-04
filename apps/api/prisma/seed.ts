@@ -87,10 +87,10 @@ async function main() {
     images: ["/placeholder/scratch-1.png"],
     tool: "Scratch",
     studentDisplayName: "Andi",
-    studentAgeRange: "9-10 tahun",
+    studentAgeRange: "9-10",
     learningOutcomesId: "Variabel, perulangan, dan kondisi.",
     learningOutcomesEn: "Variables, loops, and conditionals.",
-    status: "DRAFT" as const,
+    status: "PUBLISHED" as const,
     order: 10,
   };
   await prisma.project.upsert({ where: { slug: student.slug }, update: student, create: student });

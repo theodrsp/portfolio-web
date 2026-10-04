@@ -1,7 +1,7 @@
 export function Logo({ className = "" }: { className?: string }) {
   return (
     <span
-      lang="ja"
+      lang="zh"
       aria-label="Timotius Theodearson"
       className={`font-heading text-xl font-semibold tracking-[0.25em] text-washi ${className}`}
     >

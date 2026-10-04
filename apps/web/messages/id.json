@@ -1,1 +1,65 @@
-{ "Test": { "hello": "Halo" } }
+{
+  "Nav": {
+    "language": "Bahasa",
+    "home": "Beranda",
+    "projects": "Proyek",
+    "studentWorks": "Karya Murid",
+    "about": "Tentang",
+    "contact": "Kontak",
+    "openMenu": "Buka menu",
+    "closeMenu": "Tutup menu"
+  },
+  "Common": {
+    "all": "Semua"
+  },
+  "Hero": {
+    "statProjects": "Proyek selesai",
+    "statYears": "Tahun mengajar",
+    "statStudents": "Murid diajar",
+    "ctaProjects": "Lihat Proyek",
+    "ctaContact": "Hubungi Saya",
+    "photoAlt": "Foto {name}"
+  },
+  "About": {
+    "title": "Tentang Saya",
+    "teaching": "Pengalaman Mengajar",
+    "photoAlt": "Foto {name}"
+  },
+  "Projects": {
+    "title": "Proyek Aplikasi",
+    "intro": "Aplikasi yang saya bangun sendiri.",
+    "filterLabel": "Filter proyek",
+    "empty": "Belum ada proyek untuk kategori ini.",
+    "featured": "Unggulan",
+    "coverAlt": "Tampilan proyek {title}",
+    "demo": "Lihat Demo",
+    "source": "Kode Sumber"
+  },
+  "StudentWorks": {
+    "title": "Karya Murid",
+    "intro": "Hasil belajar murid-murid saya.",
+    "filterLabel": "Filter karya murid",
+    "empty": "Belum ada karya untuk kategori ini.",
+    "close": "Tutup detail karya",
+    "screenshotAlt": "Tangkapan layar {current} dari {total}: {title}",
+    "viewScreenshot": "Lihat tangkapan layar {number}",
+    "learningOutcomes": "Capaian belajar",
+    "age": "{range} tahun"
+  },
+  "Contact": {
+    "title": "Kontak",
+    "intro": "Punya proyek, pertanyaan, atau ingin anak Anda belajar koding? Hubungi saya.",
+    "openProfile": "Buka profil",
+    "downloadCv": "Unduh CV",
+    "formTitle": "Kirim pesan",
+    "name": "Nama",
+    "message": "Pesan",
+    "send": "Kirim",
+    "comingSoon": "Pengiriman pesan segera tersedia."
+  },
+  "NotFound": {
+    "title": "Halaman tidak ditemukan",
+    "description": "Halaman yang Anda cari tidak ada atau sudah dipindahkan.",
+    "back": "Kembali ke beranda"
+  }
+}

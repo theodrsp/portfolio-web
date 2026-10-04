@@ -1,18 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-
 import Image from "next/image";
-import type { publicProjectSchema } from "@portfolio/shared";
-import type { z } from "zod";
-
-type StudentWork = z.infer<typeof publicProjectSchema>;
+import { useTranslations } from "next-intl";
+import type { LocalizedProject } from "@/lib/localize";
 
 export function StudentWorkModal({
   work,
   onClose,
 }: {
-  work: StudentWork | null;
+  work: LocalizedProject | null;
   onClose: () => void;
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -51,9 +48,10 @@ function ModalContent({
   work,
   onCloseClick,
 }: {
-  work: StudentWork;
+  work: LocalizedProject;
   onCloseClick: () => void;
 }) {
+  const t = useTranslations("StudentWorks");
   const [index, setIndex] = useState(0);
   const images = work.images.length > 0 ? work.images : work.coverUrl ? [work.coverUrl] : [];
 
@@ -63,17 +61,17 @@ function ModalContent({
         <div>
           {work.tool && <p className="text-sm text-maya">{work.tool}</p>}
           <h3 id="karya-judul" className="font-heading text-2xl">
-            {work.titleId}
+            {work.title}
           </h3>
           <p className="mt-1 text-sm text-mist">
             {work.studentDisplayName}
-            {work.studentAgeRange ? ` · ${work.studentAgeRange}` : ""}
+            {work.studentAgeRange ? ` · ${t("age", { range: work.studentAgeRange })}` : ""}
           </p>
         </div>
         <button
           type="button"
           onClick={onCloseClick}
-          aria-label="Tutup detail karya"
+          aria-label={t("close")}
           className="shrink-0 rounded p-2 text-2xl leading-none text-mist hover:text-washi"
         >
           ✕
@@ -85,7 +83,7 @@ function ModalContent({
           <div className="relative mt-5 aspect-video overflow-hidden rounded bg-black">
             <Image
               src={images[index]}
-              alt={`Tangkapan layar ${index + 1} dari ${images.length}: ${work.titleId}`}
+              alt={t("screenshotAlt", { current: index + 1, total: images.length, title: work.title })}
               fill
               sizes="(min-width: 768px) 768px, 100vw"
               className="object-contain"
@@ -98,7 +96,7 @@ function ModalContent({
                   key={src}
                   type="button"
                   onClick={() => setIndex(i)}
-                  aria-label={`Lihat tangkapan layar ${i + 1}`}
+                  aria-label={t("viewScreenshot", { number: i + 1 })}
                   aria-current={i === index ? "true" : undefined}
                   className={`relative h-16 w-24 shrink-0 overflow-hidden rounded border ${
                     i === index ? "border-torii" : "border-line"
@@ -112,14 +110,14 @@ function ModalContent({
         </>
       )}
 
-      {work.descriptionId && (
-        <p className="mt-5 whitespace-pre-line text-mist">{work.descriptionId}</p>
+      {work.description && (
+        <p className="mt-5 whitespace-pre-line text-mist">{work.description}</p>
       )}
 
-      {work.learningOutcomesId && (
+      {work.learningOutcomes && (
         <>
-          <h4 className="mt-6 font-heading text-lg">Capaian belajar</h4>
-          <p className="mt-2 whitespace-pre-line text-mist">{work.learningOutcomesId}</p>
+          <h4 className="mt-6 font-heading text-lg">{t("learningOutcomes")}</h4>
+          <p className="mt-2 whitespace-pre-line text-mist">{work.learningOutcomes}</p>
         </>
       )}
     </div>

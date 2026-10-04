@@ -2,31 +2,29 @@
 
 import { useMemo, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { StudentWorkModal } from "@/components/StudentWorkModal";
-import type { publicProjectSchema } from "@portfolio/shared";
-import type { z } from "zod";
+import type { LocalizedProject } from "@/lib/localize";
 
-type StudentWork = z.infer<typeof publicProjectSchema>;
-const ALL = "Semua";
-
-export function StudentGallery({ works }: { works: StudentWork[] }) {
+export function StudentGallery({ works }: { works: LocalizedProject[] }) {
+  const t = useTranslations("StudentWorks");
+  const tc = useTranslations("Common");
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const [selectedTool, setSelectedTool] = useState(ALL);
+  const [selectedTool, setSelectedTool] = useState<string | null>(null);
   const openedInApp = useRef(false); // true bila modal dibuka lewat klik, bukan tautan langsung
 
   const activeSlug = searchParams.get("karya");
   const activeWork = works.find((w) => w.slug === activeSlug) ?? null;
 
   const tools = useMemo(
-    () => [ALL, ...Array.from(new Set(works.map((w) => w.tool).filter((t): t is string => !!t)))],
+    () => Array.from(new Set(works.map((w) => w.tool).filter((x): x is string => !!x))),
     [works],
   );
-  const visible = selectedTool === ALL ? works : works.filter((w) => w.tool === selectedTool);
+  const visible = selectedTool === null ? works : works.filter((w) => w.tool === selectedTool);
 
   function openWork(slug: string) {
     openedInApp.current = true;
@@ -44,20 +42,29 @@ export function StudentGallery({ works }: { works: StudentWork[] }) {
     }
   }
 
+  const chip = (active: boolean) =>
+    active
+      ? "rounded-full bg-torii px-4 py-2 text-sm text-washi"
+      : "rounded-full border border-line px-4 py-2 text-sm text-mist hover:text-washi";
+
   return (
     <>
-      <div role="group" aria-label="Filter karya murid" className="mt-8 flex flex-wrap gap-2">
+      <div role="group" aria-label={t("filterLabel")} className="mt-8 flex flex-wrap gap-2">
+        <button
+          type="button"
+          aria-pressed={selectedTool === null}
+          onClick={() => setSelectedTool(null)}
+          className={chip(selectedTool === null)}
+        >
+          {tc("all")}
+        </button>
         {tools.map((tool) => (
           <button
             key={tool}
             type="button"
             aria-pressed={selectedTool === tool}
             onClick={() => setSelectedTool(tool)}
-            className={
-              selectedTool === tool
-                ? "rounded-full bg-torii px-4 py-2 text-sm text-washi"
-                : "rounded-full border border-line px-4 py-2 text-sm text-mist hover:text-washi"
-            }
+            className={chip(selectedTool === tool)}
           >
             {tool}
           </button>
@@ -65,7 +72,7 @@ export function StudentGallery({ works }: { works: StudentWork[] }) {
       </div>
 
       {visible.length === 0 ? (
-        <p className="mt-10 text-mist">Belum ada karya untuk kategori ini.</p>
+        <p className="mt-10 text-mist">{t("empty")}</p>
       ) : (
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {visible.map((w) => (
@@ -90,10 +97,10 @@ export function StudentGallery({ works }: { works: StudentWork[] }) {
                 )}
               </div>
               <div className="p-4">
-                <h3 className="font-heading text-lg">{w.titleId}</h3>
+                <h3 className="font-heading text-lg">{w.title}</h3>
                 <p className="mt-1 text-sm text-mist">
                   {w.studentDisplayName}
-                  {w.studentAgeRange ? ` · ${w.studentAgeRange}` : ""}
+                  {w.studentAgeRange ? ` · ${t("age", { range: w.studentAgeRange })}` : ""}
                 </p>
               </div>
             </button>

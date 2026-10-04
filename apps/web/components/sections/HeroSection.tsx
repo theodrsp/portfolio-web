@@ -1,22 +1,24 @@
-import type { profileSchema, skillSchema } from "@portfolio/shared";
+import type { skillSchema } from "@portfolio/shared";
+import type { LocalizedProfile } from "@/lib/localize";
 
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import type { z } from "zod";
 
-type Profile = z.infer<typeof profileSchema>;
 type Skill = z.infer<typeof skillSchema>;
 
 export function HeroSection({
   profile,
   skills,
 }: {
-  profile: Profile;
+  profile: LocalizedProfile;
   skills: Skill[];
 }) {
+  const t = useTranslations("Hero");
   const stats = [
-    { value: profile.projectsDoneCount, label: "Proyek selesai" },
-    { value: profile.teachingYears, label: "Tahun mengajar" },
-    { value: profile.studentsTaught, label: "Murid diajar" },
+    { value: profile.projectsDoneCount, label: t("statProjects") },
+    { value: profile.teachingYears, label: t("statYears") },
+    { value: profile.studentsTaught, label: t("statStudents") },
   ];
   const strip = skills.filter((s) => s.showInStrip);
 
@@ -25,7 +27,7 @@ export function HeroSection({
       <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2">
         <div>
           <h1 className="font-heading text-4xl text-washi md:text-5xl">{profile.nameDisplay}</h1>
-          <p className="mt-3 text-lg text-mist">{profile.headlineId}</p>
+          <p className="mt-3 text-lg text-mist">{profile.headline}</p>
 
           <dl className="mt-8 grid grid-cols-3 gap-4">
             {stats.map((s) => (
@@ -38,10 +40,10 @@ export function HeroSection({
 
           <div className="mt-8 flex gap-3">
             <a href="#proyek" className="rounded bg-torii px-5 py-3 text-washi transition hover:bg-vermilion">
-              Lihat Proyek
+              {t("ctaProjects")}
             </a>
             <a href="#kontak" className="rounded border border-line px-5 py-3 text-washi transition hover:bg-yoru-light">
-              Hubungi Saya
+              {t("ctaContact")}
             </a>
           </div>
         </div>
@@ -49,7 +51,7 @@ export function HeroSection({
         <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-lg border border-line bg-yoru">
           <Image
             src="/profile-photo-png.png"
-            alt={`Foto ${profile.nameDisplay}`}
+            alt={t("photoAlt", { name: profile.nameDisplay })}
             fill
             priority
             sizes="(min-width: 768px) 384px, 100vw"
