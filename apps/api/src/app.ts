@@ -1,6 +1,8 @@
 import express, { type ErrorRequestHandler } from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import { publicRouter } from "./routes/public.js";
+import { authRouter } from "./routes/auth.js";
 
 export const app = express();
 
@@ -10,8 +12,10 @@ app.use(
   }),
 );
 app.use(express.json());
+app.use(cookieParser());
 
 app.get("/api/health", (_req, res) => res.json({ status: "ok" }));
+app.use("/api/auth", authRouter);
 app.use("/api", publicRouter);
 
 app.use((_req, res) => res.status(404).json({ error: "Tidak ditemukan" }));

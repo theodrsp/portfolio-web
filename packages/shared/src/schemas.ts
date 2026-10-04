@@ -3,6 +3,11 @@ import { z } from "zod";
 export const projectTypeSchema = z.enum(["APP", "STUDENT_WORK"]);
 export const studentToolSchema = z.enum(["Scratch", "Roblox", "Python", "AI/ML"]);
 
+export const loginSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(1),
+});
+
 // ---------- Bentuk data yang BOLEH keluar ke publik ----------
 export const profileSchema = z.object({
   nameDisplay: z.string(),
