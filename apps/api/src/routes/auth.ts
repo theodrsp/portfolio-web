@@ -3,7 +3,7 @@ import {
   COOKIE_NAME,
   cookieOptions,
   getSecret,
-} from "../lib/auth-config";
+} from "../lib/auth-config.js";
 
 import { Router } from "express";
 import bcrypt from "bcryptjs";
