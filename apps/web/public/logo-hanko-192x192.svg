@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700&amp;display=swap');
+      .hanko-kanji {
+        font-family: 'Noto Serif JP', 'MingLiU', 'SimSun', serif;
+        font-size: 32px;
+        font-weight: 700;
+        fill: #F4F0E8;
+      }
+    </style>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#DE3E3E" />
+      <stop offset="50%" stop-color="#C62828" />
+      <stop offset="100%" stop-color="#9B1919" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Kage Black -->
+  <rect width="192" height="192" fill="#0B0B0D" rx="20" />
+
+  <!-- Hanko Stamp Box -->
+  <rect x="24" y="16" width="144" height="160" rx="16" fill="url(#redGrad)" stroke="#E5484D" stroke-width="2.5" />
+
+  <!-- Inner Inkan Border -->
+  <rect x="29" y="21" width="134" height="150" rx="12" fill="none" stroke="#F4F0E8" stroke-opacity="0.35" stroke-width="1.2" />
+
+  <!-- Characters Vertically Aligned: 提 / 摩 / 太 -->
+  <text x="96" y="58" text-anchor="middle" dominant-baseline="central" class="hanko-kanji">提</text>
+  <text x="96" y="99" text-anchor="middle" dominant-baseline="central" class="hanko-kanji">摩</text>
+  <text x="96" y="140" text-anchor="middle" dominant-baseline="central" class="hanko-kanji">太</text>
+</svg>

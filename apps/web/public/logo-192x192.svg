@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;700&amp;family=Inter:wght@500;600&amp;display=swap');
+      .kanji {
+        font-family: 'Noto Serif JP', 'MingLiU', 'SimSun', 'Microsoft YaHei', serif;
+        font-size: 27px;
+        font-weight: 700;
+        fill: #F4F0E8;
+        letter-spacing: 2px;
+      }
+      .latin {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        font-size: 8.5px;
+        font-weight: 600;
+        letter-spacing: 3.5px;
+        fill: #D6A85F;
+      }
+    </style>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8C488" />
+      <stop offset="50%" stop-color="#D6A85F" />
+      <stop offset="100%" stop-color="#B8863A" />
+    </linearGradient>
+    <linearGradient id="yoruGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#16161C" />
+      <stop offset="100%" stop-color="#0F0F12" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Kage Black -->
+  <rect width="192" height="192" fill="#0B0B0D" rx="20" />
+
+  <!-- Outer Fine Border -->
+  <rect x="8" y="8" width="176" height="176" rx="14" fill="none" stroke="#292930" stroke-width="1" />
+
+  <!-- Inner Surface Yoru -->
+  <rect x="12" y="12" width="168" height="168" rx="12" fill="url(#yoruGrad)" stroke="url(#goldGrad)" stroke-width="1.5" />
+
+  <!-- Inner Delicate Accent Border -->
+  <rect x="16" y="16" width="160" height="160" rx="9" fill="none" stroke="#D6A85F" stroke-opacity="0.3" stroke-width="1" />
+
+  <!-- Torii Red Seal Dot -->
+  <circle cx="96" cy="38" r="4.5" fill="#C62828" />
+
+  <!-- Kanji: 提摩太 -->
+  <text x="96" y="94" text-anchor="middle" dominant-baseline="central" class="kanji">提摩太</text>
+
+  <!-- Gold Accent Divider -->
+  <line x1="68" y1="120" x2="124" y2="120" stroke="url(#goldGrad)" stroke-width="1.2" stroke-linecap="round" />
+
+  <!-- Latin Subtitle -->
+  <text x="98" y="142" text-anchor="middle" class="latin">TIMOTIUS</text>
+</svg>

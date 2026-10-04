@@ -12,7 +12,10 @@ const notoSerifJP = Noto_Serif_JP({
   display: "swap",
 });
 
-export const metadata: Metadata = { title: "Timotius Theodearson" };
+export const metadata: Metadata = {
+  metadataBase: new URL(process.env.SITE_URL ?? "http://localhost:3000"),
+  title: { template: "%s | Portofolio", default: "Portofolio" },
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

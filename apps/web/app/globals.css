@@ -14,6 +14,9 @@ html {
 section[id] {
   scroll-margin-top: 5rem; /* sesuaikan dengan tinggi navbar */
 }
+body:has(dialog[open]) {
+  overflow: hidden;
+}
 
 @layer base {
   body {

@@ -20,7 +20,7 @@ async function main() {
     bioId: "Teks sementara. Ganti dengan bio aslimu.",
     bioEn: "Placeholder text. Replace with your real bio.",
     email: "theodrsp@gmail.com",
-    whatsapp: "085609289685",
+    whatsapp: "6285609289685",
     linkedinUrl: "https://www.linkedin.com/in/timotius-theodearson-975624286/",
     githubUrl: "https://github.com/theodrsp",
     teachingPhilosophyId: "Pemrograman bukan sekadar sintaks, tetapi cara berpikir kritis dan menyelesaikan masalah secara kreatif.",
