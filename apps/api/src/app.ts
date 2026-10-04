@@ -3,8 +3,28 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import { publicRouter } from "./routes/public.js";
 import { authRouter } from "./routes/auth.js";
+import helmet from "helmet";
+import { getAllowedOrigins, requireAllowedOrigin } from "./lib/origins.js";
 
+const isProd = process.env.NODE_ENV === "production";
 export const app = express();
+
+if (isProd) app.set("trust proxy", 1); // di balik proxy hosting, agar IP asli terbaca
+
+app.use(helmet());
+app.use(
+  cors({
+    origin(origin, cb) {
+      if (!origin || getAllowedOrigins().includes(origin)) return cb(null, true);
+      return cb(null, false);
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  })
+);
+app.use(express.json({ limit: "100kb" }));
+app.use(cookieParser());
+app.use("/api", requireAllowedOrigin);
 
 app.use(
   cors({

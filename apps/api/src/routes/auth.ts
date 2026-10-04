@@ -10,13 +10,23 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { loginSchema } from "@portfolio/shared";
 import { prisma } from "../lib/prisma.js";
+import rateLimit from "express-rate-limit";
 import { requireAuth } from "../middleware/requireAuth.js";
+
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 menit
+  limit: 10,                // maksimal 10 percobaan gagal per IP
+  skipSuccessfulRequests: true,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { message: "Terlalu banyak percobaan. Coba lagi dalam beberapa menit." },
+});
 
 export const authRouter = Router();
 
 const DUMMY_HASH = bcrypt.hashSync("password-palsu-untuk-pembanding", 12);
 
-authRouter.post("/login", async (req, res) => {
+authRouter.post("/login",loginLimiter, async (req, res) => {
   const parsed = loginSchema.safeParse(req.body);
   if (!parsed.success) {
     return res.status(400).json({ message: "Data tidak valid" });
