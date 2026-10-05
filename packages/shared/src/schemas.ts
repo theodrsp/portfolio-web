@@ -117,3 +117,7 @@ export const projectInputSchema = z
   });
 
 export type ProjectInput = z.infer<typeof projectInputSchema>;
+
+export const messageReadInputSchema = z.object({ isRead: z.boolean() });
+
+export type TeachingToolInput = z.infer<typeof teachingToolInputSchema>;

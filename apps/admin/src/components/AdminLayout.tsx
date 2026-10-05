@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from "react-router";
-
+import { Badge } from "@portfolio/ui";
 import { useAuth } from "../auth/auth-context";
+import { useMessages } from "../lib/messages";
 import { useState } from "react";
 
 const NAV = [
@@ -24,6 +25,8 @@ function linkClass({ isActive }: { isActive: boolean }) {
 
 export default function AdminLayout() {
   const { user, logout } = useAuth();
+  const { data: messages } = useMessages();
+  const unread = messages?.filter((m) => !m.isRead).length ?? 0;
   const [open, setOpen] = useState(false);
 
   return (
@@ -68,6 +71,9 @@ export default function AdminLayout() {
               className={linkClass}
             >
               {item.label}
+              {item.to === "/messages" && unread > 0 && (
+                <Badge variant="danger" className="ml-2">{unread}</Badge>
+              )}
             </NavLink>
           ))}
         </nav>

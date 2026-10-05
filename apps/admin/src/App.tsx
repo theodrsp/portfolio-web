@@ -4,7 +4,8 @@ import AdminLayout from "./components/AdminLayout";
 import { AuthProvider } from "./auth/AuthProvider";
 import DashboardPage from "./pages/DashboardPage";
 import LoginPage from "./pages/LoginPage";
-import PlaceholderPage from "./pages/PlaceholderPage";
+import TeachingToolsPage from "./pages/TeachingToolsPage";
+import MessagesPage from "./pages/MessagesPage";
 import ProfilePage from "./pages/ProfilePage";
 import ProjectEditPage from "./pages/ProjectEditPage";
 import ProjectListPage from "./pages/ProjectListPage";
@@ -27,8 +28,8 @@ export default function App() {
             <Route path="student-works" element={<ProjectListPage type="STUDENT_WORK" />} />
             <Route path="student-works/new" element={<ProjectEditPage type="STUDENT_WORK" />} />
             <Route path="student-works/:id" element={<ProjectEditPage type="STUDENT_WORK" />} />
-            <Route path="teaching-tools" element={<PlaceholderPage title="Alat Mengajar" />} />
-            <Route path="messages" element={<PlaceholderPage title="Pesan Masuk" />} />
+            <Route path="teaching-tools" element={<TeachingToolsPage />} />
+            <Route path="messages" element={<MessagesPage />} />
           </Route>
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
