@@ -35,8 +35,8 @@ export function LanguageSwitcher() {
           onClick={() => switchTo(l)}
           className={
             l === locale
-              ? "rounded px-3 py-2 bg-torii text-washi"
-              : "rounded px-3 py-2 text-mist hover:text-washi"
+              ? "inline-flex min-h-11 min-w-11 items-center justify-center rounded px-3 py-2 bg-torii text-washi"
+              : "inline-flex min-h-11 min-w-11 items-center justify-center rounded px-3 py-2 text-mist hover:text-washi"
           }
         >
           {LABELS[l].short}

@@ -23,8 +23,8 @@ export function ProjectFilter({ projects }: { projects: LocalizedProject[] }) {
 
   const chip = (active: boolean) =>
     active
-      ? "rounded-full bg-torii px-4 py-2 text-sm text-washi"
-      : "rounded-full border border-line px-4 py-2 text-sm text-mist hover:text-washi";
+      ? "inline-flex min-h-11 items-center justify-center rounded-full bg-torii px-4 py-2 text-sm text-washi"
+      : "inline-flex min-h-11 items-center justify-center rounded-full border border-line px-4 py-2 text-sm text-mist hover:text-washi";
 
   return (
     <>

@@ -7,7 +7,8 @@
     "about": "Tentang",
     "contact": "Kontak",
     "openMenu": "Buka menu",
-    "closeMenu": "Tutup menu"
+    "closeMenu": "Tutup menu",
+    "mainNav": "Navigasi utama"
   },
   "Common": {
     "all": "Semua",
@@ -72,5 +73,9 @@
     "title": "Halaman tidak ditemukan",
     "description": "Halaman yang Anda cari tidak ada atau sudah dipindahkan.",
     "back": "Kembali ke beranda"
+  },
+  "Footer": {
+    "copyright": "© {year} {name}. Hak cipta dilindungi undang-undang.",
+    "builtWith": "Dibuat dengan Next.js & TypeScript."
   }
 }

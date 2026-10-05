@@ -7,7 +7,7 @@ import { contactInputSchema } from "@portfolio/shared";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const field =
-  "mt-1 w-full rounded border border-line bg-yoru px-4 py-3 text-washi placeholder:text-mist focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-maya aria-invalid:border-danger";
+  "mt-1 w-full rounded border border-mist/60 bg-yoru px-4 py-3 text-washi placeholder:text-mist focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-maya aria-invalid:border-danger";
 
 type Values = { name: string; email: string; message: string; website: string };
 type FieldKey = "name" | "email" | "message";
@@ -184,7 +184,7 @@ export function ContactForm() {
         type="submit"
         disabled={status === "sending"}
         aria-busy={status === "sending"}
-        className="rounded bg-torii px-5 py-3 text-washi hover:bg-vermilion focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-maya disabled:cursor-not-allowed disabled:opacity-50"
+        className="rounded bg-torii px-5 py-3 text-washi hover:bg-vermilion hover:text-kage focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-maya disabled:cursor-not-allowed disabled:opacity-50"
       >
         {status === "sending" ? t("sending") : t("send")}
       </button>

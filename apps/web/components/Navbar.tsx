@@ -39,11 +39,11 @@ export function Navbar() {
   }, [open]);
 
   const linkClass = (id: string) =>
-    active === id ? "text-torii font-medium" : "text-mist hover:text-washi";
+    active === id ? "text-vermilion font-medium" : "text-mist hover:text-washi";
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-kage/90 backdrop-blur">
-      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
+      <nav aria-label={t("mainNav")} className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
         <a href="#beranda" className="flex items-center">
           <Logo />
         </a>
@@ -71,7 +71,7 @@ export function Navbar() {
           <LanguageSwitcher />
           <button
             type="button"
-            className="p-2 text-washi"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded p-2 text-washi"
             aria-label={open ? t("closeMenu") : t("openMenu")}
             aria-expanded={open}
             aria-controls="menu-hp"

@@ -6,6 +6,7 @@ import { ContactSection } from "@/components/sections/ContactSection";
 import { HeroSection } from "@/components/sections/HeroSection";
 import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { StudentWorksSection } from "@/components/sections/StudentWorksSection";
 import { fetchApi } from "@/lib/api";
@@ -95,6 +96,7 @@ export default async function Home({
         <AboutSection profile={profile} />
         <ContactSection profile={profile} />
       </main>
+      <Footer nameDisplay={profile.nameDisplay} />
     </>
   );
 }

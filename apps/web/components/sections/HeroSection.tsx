@@ -23,10 +23,10 @@ export function HeroSection({
   const strip = skills.filter((s) => s.showInStrip);
 
   return (
-    <section id="beranda" className="px-4 pb-16 pt-28">
+    <section id="beranda" aria-labelledby="hero-judul" className="px-4 pb-16 pt-28">
       <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2">
         <div>
-          <h1 className="font-heading text-4xl text-washi md:text-5xl">{profile.nameDisplay}</h1>
+          <h1 id="hero-judul" className="font-heading text-4xl text-washi md:text-5xl">{profile.nameDisplay}</h1>
           <p className="mt-3 text-lg text-mist">{profile.headline}</p>
 
           <dl className="mt-8 grid grid-cols-3 gap-4 animate-fade-up" style={{ animationDelay: "150ms" }}>
@@ -39,7 +39,7 @@ export function HeroSection({
           </dl>
 
           <div className="mt-8 flex gap-3 animate-fade-up" style={{ animationDelay: "300ms" }}>
-            <a href="#proyek" className="rounded bg-torii px-5 py-3 text-washi transition hover:bg-vermilion">
+            <a href="#proyek" className="rounded bg-torii px-5 py-3 text-washi transition hover:bg-vermilion hover:text-kage">
               {t("ctaProjects")}
             </a>
             <a href="#kontak" className="rounded border border-line px-5 py-3 text-washi transition hover:bg-yoru-light">

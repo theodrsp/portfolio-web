@@ -7,10 +7,10 @@ export function StudentWorksSection({ works }: { works: LocalizedProject[] }) {
   const t = useTranslations("StudentWorks");
 
   return (
-    <section id="karya-murid" className="px-4 py-20">
+    <section id="karya-murid" aria-labelledby="karya-murid-judul" className="px-4 py-20">
       <div className="mx-auto max-w-6xl">
         <div className="reveal">
-          <h2 className="font-heading text-3xl">{t("title")}</h2>
+          <h2 id="karya-murid-judul" className="font-heading text-3xl">{t("title")}</h2>
           <p className="mt-2 text-mist">{t("intro")}</p>
         </div>
         {/* Suspense wajib karena galeri memakai useSearchParams */}

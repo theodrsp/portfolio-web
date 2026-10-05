@@ -60,9 +60,9 @@ function ModalContent({
       <div className="flex items-start justify-between gap-4">
         <div>
           {work.tool && <p className="text-sm text-maya">{work.tool}</p>}
-          <h3 id="karya-judul" className="font-heading text-2xl">
+          <h2 id="karya-judul" className="font-heading text-2xl">
             {work.title}
-          </h3>
+          </h2>
           <p className="mt-1 text-sm text-mist">
             {work.studentDisplayName}
             {work.studentAgeRange ? ` · ${t("age", { range: work.studentAgeRange })}` : ""}
@@ -72,7 +72,7 @@ function ModalContent({
           type="button"
           onClick={onCloseClick}
           aria-label={t("close")}
-          className="shrink-0 rounded p-2 text-2xl leading-none text-mist hover:text-washi"
+          className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded text-2xl leading-none text-mist hover:text-washi"
         >
           ✕
         </button>
@@ -116,7 +116,7 @@ function ModalContent({
 
       {work.learningOutcomes && (
         <>
-          <h4 className="mt-6 font-heading text-lg">{t("learningOutcomes")}</h4>
+          <h3 className="mt-6 font-heading text-lg">{t("learningOutcomes")}</h3>
           <p className="mt-2 whitespace-pre-line text-mist">{work.learningOutcomes}</p>
         </>
       )}
