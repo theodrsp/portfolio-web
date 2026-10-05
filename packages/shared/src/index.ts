@@ -185,3 +185,11 @@ export type ProfileInput = z.infer<typeof profileInputSchema>;
 export type ProjectInput = z.infer<typeof projectInputSchema>;
 export const messageReadInputSchema = z.object({ isRead: z.boolean() });
 export type TeachingToolInput = z.infer<typeof teachingToolInputSchema>;
+
+export const contactInputSchema = z.object({
+  name: z.string().trim().min(1).max(100),
+  email: z.string().trim().email().max(200),
+  message: z.string().trim().min(10).max(2000),
+});
+
+export type ContactInput = z.infer<typeof contactInputSchema>;
