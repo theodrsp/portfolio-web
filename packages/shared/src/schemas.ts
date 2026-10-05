@@ -115,3 +115,5 @@ export const projectInputSchema = z
     need(!!p.descriptionId && !!p.descriptionEn, "descriptionId", "Deskripsi wajib diisi dua bahasa untuk karya murid");
     need(!!p.learningOutcomesId && !!p.learningOutcomesEn, "learningOutcomesId", "Capaian belajar wajib diisi dua bahasa");
   });
+
+export type ProjectInput = z.infer<typeof projectInputSchema>;
