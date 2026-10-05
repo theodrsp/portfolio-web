@@ -10,7 +10,7 @@ import type { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const notoSerifJP = Noto_Serif_JP({
-  weight: ["500", "600", "700"],
+  weight: ["600"],
   preload: false, // font Jepang besar, jangan di-preload
   variable: "--font-noto-serif-jp",
   display: "swap",
