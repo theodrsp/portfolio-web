@@ -55,7 +55,17 @@
     "name": "Name",
     "message": "Message",
     "send": "Send",
-    "comingSoon": "Message sending is coming soon."
+    "sending": "Sending...",
+    "success": "Thank you! Your message has been sent, and I'll reply as soon as I can.",
+    "error": "Your message could not be sent. Please try again, or reach me by email.",
+    "rateLimited": "Too many messages in a short time. Please try again later.",
+    "invalidForm": "Please check the highlighted fields.",
+    "privacy": "Your name and email are only used to reply to this message.",
+    "errors": {
+        "name": "Please enter your name.",
+        "email": "Please enter a valid email address.",
+        "message": "Please write a message of at least 10 characters."
+    }
   },
   "NotFound": {
     "title": "Page not found",

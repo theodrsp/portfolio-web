@@ -1,11 +1,10 @@
+import { ContactForm } from "./ContactForm";
 import type { LocalizedProfile } from "@/lib/localize";
 import { useTranslations } from "next-intl";
 
-const field =
-  "mt-1 w-full rounded border border-line bg-yoru px-4 py-3 text-washi placeholder:text-mist focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-maya";
-
 export function ContactSection({ profile }: { profile: LocalizedProfile }) {
   const t = useTranslations("Contact");
+
   // wa.me hanya menerima angka dengan kode negara, tanpa +, spasi, atau strip
   const waNumber = profile.whatsapp.replace(/\D/g, "");
 
@@ -50,34 +49,12 @@ export function ContactSection({ profile }: { profile: LocalizedProfile }) {
           )}
         </div>
 
-        {/* Form: tampilan saja, difungsikan di Tahap 8 */}
-        <form aria-labelledby="form-kontak-judul" className="space-y-4">
+        <div>
           <h3 id="form-kontak-judul" className="font-heading text-xl">
             {t("formTitle")}
           </h3>
-
-          <div>
-            <label htmlFor="nama" className="text-sm text-mist">{t("name")}</label>
-            <input id="nama" name="name" type="text" autoComplete="name" required maxLength={100} className={field} />
-          </div>
-          <div>
-            <label htmlFor="email" className="text-sm text-mist">Email</label>
-            <input id="email" name="email" type="email" autoComplete="email" required maxLength={200} className={field} />
-          </div>
-          <div>
-            <label htmlFor="pesan" className="text-sm text-mist">{t("message")}</label>
-            <textarea id="pesan" name="message" rows={5} required maxLength={2000} className={field} />
-          </div>
-
-          <button
-            type="submit"
-            disabled
-            className="rounded bg-torii px-5 py-3 text-washi disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            {t("send")}
-          </button>
-          <p className="text-sm text-mist">{t("comingSoon")}</p>
-        </form>
+          <ContactForm />
+        </div>
       </div>
     </section>
   );

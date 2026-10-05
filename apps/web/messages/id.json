@@ -55,7 +55,17 @@
     "name": "Nama",
     "message": "Pesan",
     "send": "Kirim",
-    "comingSoon": "Pengiriman pesan segera tersedia."
+    "sending": "Mengirim...",
+    "success": "Terima kasih! Pesan Anda sudah terkirim dan akan saya balas secepatnya.",
+    "error": "Pesan belum terkirim. Silakan coba lagi, atau hubungi saya lewat email.",
+    "rateLimited": "Terlalu banyak pesan dalam waktu singkat. Silakan coba lagi nanti.",
+    "invalidForm": "Periksa kembali isian yang ditandai.",
+    "privacy": "Nama dan email Anda hanya dipakai untuk membalas pesan ini.",
+    "errors": {
+        "name": "Isi nama Anda.",
+        "email": "Isi alamat email yang valid.",
+        "message": "Tulis pesan minimal 10 karakter."
+    }
   },
   "NotFound": {
     "title": "Halaman tidak ditemukan",
