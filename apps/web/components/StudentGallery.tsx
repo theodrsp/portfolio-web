@@ -80,7 +80,7 @@ export function StudentGallery({ works }: { works: LocalizedProject[] }) {
               key={w.id}
               type="button"
               onClick={() => openWork(w.slug)}
-              className="overflow-hidden rounded-lg border border-line bg-yoru text-left transition hover:border-torii focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-maya"
+              className="overflow-hidden rounded-lg border border-line bg-yoru text-left transition hover:border-torii focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-maya reveal motion-safe:transition-transform motion-safe:duration-300 motion-safe:hover:-translate-y-1"
             >
               <div className="relative aspect-video bg-yoru-light">
                 <Image

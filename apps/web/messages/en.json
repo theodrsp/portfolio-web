@@ -10,7 +10,8 @@
     "closeMenu": "Close menu"
   },
   "Common": {
-    "all": "All"
+    "all": "All",
+    "skipToContent": "Skip to main content"
   },
   "Hero": {
     "statProjects": "Projects completed",

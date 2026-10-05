@@ -18,7 +18,7 @@ export function AboutSection({ profile }: { profile: LocalizedProfile }) {
           />
         </div>
 
-        <div>
+        <div className="reveal">
           <h2 className="font-heading text-3xl text-washi">{t("title")}</h2>
           <p className="mt-4 leading-relaxed text-mist">{profile.bio}</p>
 

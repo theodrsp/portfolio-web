@@ -88,7 +88,7 @@ export default async function Home({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
       <Navbar />
-      <main className="pt-16">
+      <main id="konten" tabIndex={-1} className="pt-16 outline-none">
         <HeroSection profile={profile} skills={skills} />
         <ProjectsSection projects={appProjects} />
         <StudentWorksSection works={studentWorks} />

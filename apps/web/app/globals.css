@@ -7,10 +7,6 @@
   --font-sans: var(--font-inter), "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 section[id] {
   scroll-margin-top: 5rem; /* sesuaikan dengan tinggi navbar */
 }
@@ -23,5 +19,96 @@ body:has(dialog[open]) {
     background: var(--color-kage);
     color: var(--color-washi);
     font-family: var(--font-sans);
+  }
+}
+
+/* ===== Tahap 8C: polesan ===== */
+
+@layer base {
+  :root {
+    color-scheme: dark; /* scrollbar dan kontrol bawaan browser ikut gelap */
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Agar judul section tidak tertutup navbar saat navigasi anchor.
+     Sesuaikan dengan tinggi navbar, dan HAPUS blok ini jika section sudah memakai scroll-mt-* */
+  html {
+    scroll-padding-top: 5rem;
+  }
+
+  /* Indikator fokus keyboard yang seragam */
+  :focus-visible {
+    outline: 2px solid var(--color-maya);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--color-torii);
+    color: var(--color-washi);
+  }
+
+  /* Modal (dialog bawaan) membuka dan menutup dengan transisi halus */
+  dialog {
+    opacity: 0;
+    transform: scale(0.97);
+    transition:
+      opacity 200ms ease,
+      transform 200ms ease,
+      overlay 200ms allow-discrete,
+      display 200ms allow-discrete;
+  }
+  dialog[open] {
+    opacity: 1;
+    transform: none;
+  }
+  @starting-style {
+    dialog[open] {
+      opacity: 0;
+      transform: scale(0.97);
+    }
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Muncul halus saat halaman dimuat (untuk elemen sekunder, bukan LCP) */
+.animate-fade-up {
+  animation: fade-up 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Muncul halus saat masuk layar; diabaikan oleh browser yang belum mendukung */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: fade-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+  }
+}
+
+/* Pengguna yang mematikan animasi di sistemnya: matikan semua gerak */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

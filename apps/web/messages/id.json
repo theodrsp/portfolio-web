@@ -10,7 +10,8 @@
     "closeMenu": "Tutup menu"
   },
   "Common": {
-    "all": "Semua"
+    "all": "Semua",
+    "skipToContent": "Lewati ke konten utama"
   },
   "Hero": {
     "statProjects": "Proyek selesai",

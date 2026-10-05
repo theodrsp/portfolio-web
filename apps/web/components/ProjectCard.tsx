@@ -6,7 +6,7 @@ export function ProjectCard({ project }: { project: LocalizedProject }) {
   const t = useTranslations("Projects");
 
   return (
-    <article className="flex flex-col overflow-hidden rounded-lg border border-line bg-yoru">
+    <article className="flex flex-col overflow-hidden rounded-lg border border-line bg-yoru reveal motion-safe:transition-transform motion-safe:duration-300 motion-safe:hover:-translate-y-1">
       <div className="relative aspect-video bg-yoru-light">
         {project.coverUrl ? (
           <Image

@@ -29,7 +29,7 @@ export function HeroSection({
           <h1 className="font-heading text-4xl text-washi md:text-5xl">{profile.nameDisplay}</h1>
           <p className="mt-3 text-lg text-mist">{profile.headline}</p>
 
-          <dl className="mt-8 grid grid-cols-3 gap-4">
+          <dl className="mt-8 grid grid-cols-3 gap-4 animate-fade-up" style={{ animationDelay: "150ms" }}>
             {stats.map((s) => (
               <div key={s.label}>
                 <dt className="text-sm text-mist">{s.label}</dt>
@@ -38,7 +38,7 @@ export function HeroSection({
             ))}
           </dl>
 
-          <div className="mt-8 flex gap-3">
+          <div className="mt-8 flex gap-3 animate-fade-up" style={{ animationDelay: "300ms" }}>
             <a href="#proyek" className="rounded bg-torii px-5 py-3 text-washi transition hover:bg-vermilion">
               {t("ctaProjects")}
             </a>

@@ -19,8 +19,10 @@ export function ContactSection({ profile }: { profile: LocalizedProfile }) {
     <section id="kontak" className="px-4 py-20">
       <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2">
         <div>
-          <h2 className="font-heading text-3xl">{t("title")}</h2>
-          <p className="mt-2 text-mist">{t("intro")}</p>
+          <div className="reveal">
+            <h2 className="font-heading text-3xl">{t("title")}</h2>
+            <p className="mt-2 text-mist">{t("intro")}</p>
+          </div>
 
           <ul className="mt-8 space-y-4">
             {channels.map((c) => (
