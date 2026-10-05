@@ -54,7 +54,7 @@ export function HeroSection({
             alt={t("photoAlt", { name: profile.nameDisplay })}
             fill
             priority
-            sizes="(min-width: 768px) 384px, 100vw"
+            sizes="(min-width: 768px) 384px, (min-width: 420px) 384px, 100vw"
             className="object-cover object-top"
           />
         </div>
