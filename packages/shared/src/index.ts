@@ -182,3 +182,4 @@ export const skillInputSchema = z.object({
 
 export type SkillInput = z.infer<typeof skillInputSchema>;
 export type ProfileInput = z.infer<typeof profileInputSchema>;
+export type ProjectInput = z.infer<typeof projectInputSchema>;
