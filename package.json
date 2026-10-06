@@ -5,6 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "pnpm --filter web --filter admin dev",
+    "dev:web": "pnpm --filter web dev",
+    "dev:admin": "pnpm --filter admin dev",
+    "build:web": "pnpm --filter web build",
+    "build:admin": "pnpm --filter admin build",
     "build:api": "pnpm --filter api exec prisma generate",
     "start:api": "pnpm --filter api start"
   },

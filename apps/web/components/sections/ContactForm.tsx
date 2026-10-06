@@ -3,8 +3,7 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { useTranslations } from "next-intl";
 import { contactInputSchema } from "@portfolio/shared";
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+import { supabase } from "@/lib/supabase";
 
 const field =
   "mt-1 w-full rounded border border-mist/60 bg-yoru px-4 py-3 text-washi placeholder:text-mist focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-maya aria-invalid:border-danger";
@@ -63,26 +62,27 @@ export function ContactForm() {
       return;
     }
 
-    if (!API_URL) {
-      setStatus("error");
+    if (values.website) {
+      // Honeypot: hanya bot yang mengisi field tersembunyi ini
+      setValues(EMPTY);
+      setStatus("success");
       return;
     }
 
     setErrors({});
     setStatus("sending");
     try {
-      const res = await fetch(`${API_URL}/api/contact`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...parsed.data, website: values.website }),
+      const { error } = await supabase.from("ContactMessage").insert({
+        name: parsed.data.name,
+        email: parsed.data.email,
+        message: parsed.data.message,
       });
-      if (res.status === 201) {
+
+      if (error) {
+        setStatus("error");
+      } else {
         setValues(EMPTY);
         setStatus("success");
-      } else if (res.status === 429) {
-        setStatus("rateLimited");
-      } else {
-        setStatus("error");
       }
     } catch {
       setStatus("error");
