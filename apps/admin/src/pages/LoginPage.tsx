@@ -1,7 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { Navigate, useLocation } from "react-router";
 import { loginSchema } from "@portfolio/shared";
-import { ApiError } from "../lib/api";
 import { useAuth } from "../auth/auth-context";
 
 export default function LoginPage() {
@@ -31,10 +30,8 @@ export default function LoginPage() {
     try {
       await login(parsed.data.email, parsed.data.password);
     } catch (err) {
-      if (err instanceof ApiError && err.status === 401) {
-        setError("Email atau password salah.");
-      } else if (err instanceof ApiError && err.status === 429) {
-        setError("Terlalu banyak percobaan. Coba lagi beberapa menit lagi.");
+      if (err instanceof Error) {
+        setError(err.message);
       } else {
         setError("Tidak dapat terhubung ke server.");
       }

@@ -1,36 +1,53 @@
-import type { ReactNode } from "react";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { api, ApiError } from "../lib/api";
+import { useEffect, useState, type ReactNode } from "react";
+import { useQueryClient } from "@tanstack/react-query";
+import { supabase } from "../lib/supabase";
 import { AuthContext, type AdminUser } from "./auth-context";
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const queryClient = useQueryClient();
+  const [user, setUser] = useState<AdminUser | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Menanyakan ke API: "siapa yang sedang login?" (401 berarti belum login)
-  const { data: user = null, isLoading } = useQuery({
-    queryKey: ["me"],
-    queryFn: async () => {
-      try {
-        const res = await api.get<{ user: AdminUser }>("/api/auth/me");
-        return res.user;
-      } catch (e) {
-        if (e instanceof ApiError && e.status === 401) return null;
-        throw e;
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        setUser({ id: session.user.id, email: session.user.email ?? "" });
+      } else {
+        setUser(null);
       }
-    },
-    staleTime: Infinity,
-  });
+      setIsLoading(false);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        setUser({ id: session.user.id, email: session.user.email ?? "" });
+      } else {
+        setUser(null);
+      }
+      setIsLoading(false);
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
 
   async function login(email: string, password: string) {
-    await api.post("/api/auth/login", { email, password });
-    await queryClient.invalidateQueries({ queryKey: ["me"] });
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) {
+      if (error.message.toLowerCase().includes("invalid login credentials")) {
+        throw new Error("Email atau password salah.");
+      }
+      throw new Error(error.message);
+    }
   }
 
   async function logout() {
-    await api.post("/api/auth/logout");
-    queryClient.setQueryData(["me"], null);
-    // Buang data admin lain yang masih tersimpan di cache
-    queryClient.removeQueries({ predicate: (q) => q.queryKey[0] !== "me" });
+    await supabase.auth.signOut();
+    setUser(null);
+    queryClient.clear();
   }
 
   return (

@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 
-export type AdminUser = { id: number; email: string };
+export type AdminUser = { id: number | string; email: string };
 
 export type AuthState = {
   user: AdminUser | null;
