@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:api": "pnpm --filter api exec prisma generate",
+    "start:api": "pnpm --filter api start"
   },
   "keywords": [],
   "author": "",
